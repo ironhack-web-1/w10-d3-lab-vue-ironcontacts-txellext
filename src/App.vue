@@ -6,13 +6,19 @@
           <th> Picture </th>
           <th> Name </th>
           <th> Popularity</th>
+          <th> Won an Oscar</th>
+          <th> Won an Emmy</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for = "(person,index) in topFiveContacts" :key="index" >
-          <td> <image src="person.pictureUrl" alt="contact1Pic" /> </td>
+          <td> <img src="person.pictureUrl" alt="contact1Pic" /> </td>
           <td> {{ person.name }}</td>
           <td> {{ person.popularity }}</td>
+          <td v-if = "wonOscar === true"> Trophy </td>
+          <td v-else> X </td>
+          <td v-if = "wonEmmy === true"> Trophy </td>
+          <td v-else> X </td>
         </tr>
       </tbody>
     </table>
@@ -26,7 +32,7 @@
     name: "App",
     computed: {
       topFiveContacts() {
-        return contacts.slice(0,6)
+        return contacts.slice(0,30)
       }
     }
 }
