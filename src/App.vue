@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <h1> IronContacts</h1>
+    <button @click="">Add Random Contact </button>
     <table>
       <thead>
         <tr>
@@ -12,13 +14,11 @@
       </thead>
       <tbody>
         <tr v-for = "(person,index) in topFiveContacts" :key="index" >
-          <td> <img src="person.pictureUrl" alt="contact1Pic" /> </td>
+          <td> <img :src="person.pictureUrl" alt="contactPic" /> </td>
           <td> {{ person.name }}</td>
           <td> {{ person.popularity }}</td>
-          <td v-if = "wonOscar === true"> Trophy </td>
-          <td v-else> X </td>
-          <td v-if = "wonEmmy === true"> Trophy </td>
-          <td v-else> X </td>
+          <td> <img v-if = "person.wonOscar" src="https://img.freepik.com/premium-vector/trophy-cup-flat-vector-icon-simple-winner-symbol-gold-illustration-isolated-white-background_157943-469.jpg?w=2000" alt="trophy"/> </td>
+          <td> <img v-if = "person.wonEmmy" src="https://img.freepik.com/premium-vector/trophy-cup-flat-vector-icon-simple-winner-symbol-gold-illustration-isolated-white-background_157943-469.jpg?w=2000" alt="trophy"/> </td>
         </tr>
       </tbody>
     </table>
@@ -32,10 +32,23 @@
     name: "App",
     computed: {
       topFiveContacts() {
-        return contacts.slice(0,30)
+        return contacts.slice(0,5)
       }
+    }
+    method: {
+
     }
 }
 </script>
 
+<style scoped>
+  h1 {
+    text-align: center;
+    font-weight: 700px;
+  }
+img {
+  width: 100px;
+  height: 100px;
+}
+</style>
 
